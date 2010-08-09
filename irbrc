@@ -54,12 +54,12 @@ Wirble.colorize
 
 # Clear the screen
 def clear
-	system 'clear'
-	if ENV['RAILS_ENV']
-		return "Rails environment: " + ENV['RAILS_ENV']
-	else
-		return "No rails environment - happy hacking!";
-	end
+  system 'clear'
+  if ENV['RAILS_ENV']
+    return "Rails environment: " + ENV['RAILS_ENV']
+  else
+    return "No rails environment - happy hacking!";
+  end
 end
 
 # Shortcuts
@@ -69,10 +69,10 @@ alias c clear
 # http://www.themomorohoax.com/2009/03/27/irb-tip-load-files-faster
 def fl(file_name)
    file_name += '.rb' unless file_name =~ /\.rb/
-   @@recent = file_name 
+   @@recent = file_name
    load "#{file_name}"
 end
- 
+
 def rl
   fl(@@recent)
 end
@@ -84,7 +84,7 @@ def rt
   eval(choose_last_command)
 end
 
-# prevent 'rt' itself from recursing. 
+# prevent 'rt' itself from recursing.
 def choose_last_command
   real_last = Readline::HISTORY.to_a[-2]
   real_last == 'rt' ? @@saved_last :  (@@saved_last = real_last)
@@ -122,7 +122,7 @@ class Object
     end
     max_name = data.collect {|item| item[0].size}.max
     max_args = data.collect {|item| item[1].size}.max
-    data.each do |item| 
+    data.each do |item|
       print " #{ANSI_BOLD}#{item[0].to_s.rjust(max_name)}#{ANSI_RESET}"
       print "#{ANSI_GRAY}#{item[1].ljust(max_args)}#{ANSI_RESET}"
       print "   #{ANSI_LGRAY}#{item[2]}#{ANSI_RESET}\n"
@@ -133,7 +133,7 @@ end
 
 # http://sketches.rubyforge.org/
 require 'sketches'
-Sketches.config :editor => 'vim'
+Sketches.config :editor => 'emacsclient'
 
 # Bond (Bash-like tab completion)
 require 'bond'
